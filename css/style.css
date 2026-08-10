@@ -81,12 +81,13 @@ section {
 }
 
 .section-pad {
-  padding: 64px 0;
+  padding: 24px 0;
 }
 
 @media (max-width: 640px) {
   .section-pad {
-    padding: 48px 0;
+    padding: 18px 0;
+
   }
 }
 
