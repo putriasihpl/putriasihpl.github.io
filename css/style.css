@@ -719,6 +719,48 @@ section {
   }
 }
 
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.filter-chip {
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong);
+  padding: 7px 16px;
+  border-radius: 100px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.filter-chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.category-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent-dark);
+  background: var(--accent-tint);
+  padding: 3px 10px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+
 /* ==========================================================================
    Skills
    ========================================================================== */
@@ -758,6 +800,94 @@ section {
 
 @media (max-width: 760px) {
   .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.core-skills-block {
+  margin-bottom: 28px;
+}
+
+.core-skills-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 12px;
+}
+
+.pill-core {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  padding: 6px 16px;
+}
+
+/* ==========================================================================
+   Clients & Testimonials
+   ========================================================================== */
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.client-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 26px;
+}
+
+.client-card-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.client-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 6px;
+}
+
+.client-name {
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.client-meta {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.client-quote {
+  font-size: 0.94rem;
+  color: var(--ink-secondary);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.client-author {
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.client-author span {
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 760px) {
+  .client-grid {
     grid-template-columns: 1fr;
   }
 }

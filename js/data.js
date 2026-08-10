@@ -35,6 +35,10 @@ const PORTFOLIO_DATA = {
     resumeFile: "assets/Putri_Asih_Puji_Lestari_Resume.pdf",
     summary:
       "Mid–Senior Data Analyst professional based in Jakarta, Indonesia, with expertise in transforming complex data into objective, data-driven insights that empower executive decision-making. Skilled in data analytics, dashboard development, reporting automation, and business intelligence using SQL, Power BI, Tableau, Looker, Excel, and Python to deliver actionable recommendations aligned with business objectives.",
+    // Dipakai di section About — sengaja beda dari `summary` di atas (yang dipakai di Hero)
+    // supaya orang yang scroll lewat Hero tetap dapat informasi baru, bukan kalimat yang diulang.
+    about:
+      "Most of Putri's work starts with a workflow that's quietly broken — a monthly report that takes 15 days to prepare, a manual allocation process eating 30 minutes every morning — and ends with that workflow redesigned, not just visualized. That process-first lens turned a routine Power BI migration at PT Jasa Angkasa Semesta into a 66% cut in reporting time, and a DMAIC-based collection strategy at Astra Welab into a 50% uplift in repayment rates. She's carried that lens across airport operations, fintech, FMCG, and retail, and now mentors aspiring analysts at Dealls on building the same habit.",
   },
 
   // Angka ringkasan yang tampil sebagai "stat tiles" di bagian About.
@@ -94,7 +98,7 @@ const PORTFOLIO_DATA = {
       role: "Business Intelligence Developer",
       company: "Dimensi Dua Dinamika",
       location: "Jakarta Selatan",
-      period: "Mei 2024 – Nov 2024",
+      period: "May 2024 – Nov 2024",
       bullets: [
         "Supported the data engineering of an end to end LSP system, architecting database solutions and establishing data integrity controls and quality assessment processes.",
         "Explored, evaluated, and analyzed various BI and IT solutions.",
@@ -108,7 +112,7 @@ const PORTFOLIO_DATA = {
       role: "Area Data Analyst",
       company: "Danone Indonesia (Waters)",
       location: "Purwokerto",
-      period: "Agustus 2023 – Feb 2024",
+      period: "August 2023 – Feb 2024",
       bullets: [
         "Contributed to data-driven strategies that resulted in a 10% increase in customer retention.",
         "Created and implemented multiple dashboard development projects including KPI Dashboard, Volume Waters Performance, and Active and Register Outlet Monitoring, delivering data visualisation that provided real-time insights to management.",
@@ -133,11 +137,13 @@ const PORTFOLIO_DATA = {
   ],
 
   // Project paling baru ditaruh paling atas.
+  // `category` harus salah satu dari: "Dashboard", "Research Analyst", "Automation & Data Engineering".
   projects: [
     {
       title: "Operational Monthly Report Dashboard",
       org: "PT Jasa Angkasa Semesta",
-      date: "06/2026",
+      date: "June 2026",
+      category: "Dashboard",
       description:
         "Developed a centralized Power BI reporting platform consolidating operational performance across Ground Handling and Cargo Handling business units, covering KPIs for each respective line of business, and reducing monthly report preparation time to the BOD by 66% (from 15 days to 5 days). Integrated company-wide KPIs and executive reporting requirements to support monthly reviews by Business Unit leaders, BOD, and the Holding Company. Enhanced the dashboard with AI-powered analytics that transform operational data into strategic business insights, enabling faster performance evaluation and data-driven decision-making across management levels.",
       tags: ["Power BI", "Microsoft Fabric", "DAX", "Executive Reporting"],
@@ -146,7 +152,8 @@ const PORTFOLIO_DATA = {
     {
       title: "Customer Profiling & Collection Strategy Optimization",
       org: "Astra Welab Digital Arta",
-      date: "03/2026",
+      date: "March 2026",
+      category: "Research Analyst",
       description:
         "Led a data-driven collection strategy optimization using the DMAIC methodology, analyzing customer profiles and repayment behavior with SQL to build risk-tiering and payment propensity segmentation models. Presented recommendations via executive dashboard to senior management and BOD, the strategy was implemented in the March cycle, driving a 50% uplift in repayment rates.",
       tags: ["SQL", "DMAIC", "Segmentation", "Dashboard"],
@@ -155,7 +162,8 @@ const PORTFOLIO_DATA = {
     {
       title: "Budget Control and Realization Monitoring Dashboard",
       org: "Bank Indonesia Purwokerto",
-      date: "01/2026",
+      date: "January 2026",
+      category: "Automation & Data Engineering",
       description:
         "Designed and deployed an end to end automated pipeline using BigQuery SQL and Python to analyze customer payment patterns and optimize monthly Desk Collection assignments across 500+ portfolios per cycle, reducing manual allocation time by 90% and enabling data driven collection strategies that scaled seamlessly across growing account portfolios.",
       tags: ["BigQuery", "Python", "Automation", "SQL"],
@@ -164,7 +172,8 @@ const PORTFOLIO_DATA = {
     {
       title: "Assignment Automation For Desk Collection",
       org: "Astra Welab Digital Arta",
-      date: "04/2025",
+      date: "April 2025",
+      category: "Automation & Data Engineering",
       description:
         "Built a Python-based automation in Jupyter Notebook, scheduled to run automatically each morning, reducing the manual 30-minute daily data preparation process for the Desk Collection team by 100% through automatically compiling and emailing the required dataset.",
       tags: ["Python", "Jupyter Notebook", "Automation"],
@@ -173,13 +182,18 @@ const PORTFOLIO_DATA = {
     {
       title: "Retail Superstore Performance Dashboard",
       org: "Personal Project",
-      date: "04/2024",
+      date: "April 2024",
+      category: "Dashboard",
       description:
         "Designed and built an interactive Tableau dashboard using the Superstore dataset to analyze $2M+ in sales, profitability trends, customer segments, and product category performance. Leveraged advanced Tableau features including LOD (Level of Detail) calculations and dynamic parameters to create flexible KPI monitoring, trend analysis, and regional performance visualizations, enabling stakeholders to identify underperforming regions, optimize profit margins, and make data driven inventory and marketing decisions.",
       tags: ["Tableau", "LOD Calculations", "Data Visualization"],
       link: "",
     },
   ],
+
+  // Toolkit inti yang paling mau ditonjolkan — tampil sebagai baris terpisah
+  // di atas grid skills biasa, supaya tidak tenggelam di antara 30+ tag lain.
+  coreSkills: ["Power BI", "DAX", "SQL / T-SQL", "Python", "Tableau", "Google BigQuery"],
 
   skills: [
     {
@@ -257,6 +271,27 @@ const PORTFOLIO_DATA = {
     { name: "Data Administrator", issuer: "BNSP" },
     { name: "Hacker Rank Advance (SQL)", issuer: "HackerRank" },
   ],
+
+  // Section "Clients & Testimonials" hanya muncul di halaman kalau array ini terisi.
+  // Isi satu object per client, semuanya wajib ada supaya testimoninya kredibel:
+  //   logo      -> path ke file logo di assets/ (mis. "assets/clients/acme.png")
+  //   name      -> nama client / perusahaan
+  //   project   -> project apa yang dikerjakan
+  //   date      -> "Month Year", format sama seperti di atas
+  //   quote     -> kutipan testimoni asli dari orang yang terlibat di project itu
+  //   author    -> nama orang yang memberi testimoni
+  //   role      -> jabatan/peran orang itu di project tersebut
+  // Contoh:
+  // {
+  //   logo: "assets/clients/acme.png",
+  //   name: "PT Acme Sejahtera",
+  //   project: "Sales Performance Dashboard",
+  //   date: "July 2026",
+  //   quote: "Dashboard yang dibuat Putri langsung kami pakai untuk rapat mingguan BOD.",
+  //   author: "Budi Santoso",
+  //   role: "Operations Director, PT Acme Sejahtera",
+  // },
+  clients: [],
 
   organizations: [
     {

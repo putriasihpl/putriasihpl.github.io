@@ -64,7 +64,7 @@
   // About / Stats
   // ---------------------------------------------------------------------
   function renderAbout(data) {
-    document.getElementById("aboutSummary").textContent = data.profile.summary;
+    document.getElementById("aboutSummary").textContent = data.profile.about || data.profile.summary;
 
     const statsRow = document.getElementById("statsRow");
     statsRow.innerHTML = "";
@@ -126,7 +126,26 @@
   // ---------------------------------------------------------------------
   function renderProjects(data) {
     const grid = document.getElementById("projectGrid");
+    const filters = document.getElementById("projectFilters");
     grid.innerHTML = "";
+    filters.innerHTML = "";
+
+    const categories = ["All", ...new Set(data.projects.map((p) => p.category).filter(Boolean))];
+
+    categories.forEach((cat, i) => {
+      const btn = el(
+        `<button type="button" class="filter-chip ${i === 0 ? "active" : ""}" data-filter="${escapeHTML(cat)}">${escapeHTML(cat)}</button>`
+      );
+      btn.addEventListener("click", () => {
+        filters.querySelectorAll(".filter-chip").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        grid.querySelectorAll(".project-card").forEach((card) => {
+          const show = cat === "All" || card.dataset.category === cat;
+          card.style.display = show ? "" : "none";
+        });
+      });
+      filters.appendChild(btn);
+    });
 
     data.projects.forEach((project) => {
       const tagsHTML = project.tags
@@ -134,12 +153,13 @@
         .join("");
 
       const card = el(`
-        <div class="project-card" data-animate>
+        <div class="project-card" data-animate data-category="${escapeHTML(project.category || "")}">
           <div class="project-card-head">
             <span class="project-title">${escapeHTML(project.title)}</span>
             <span class="project-date">${escapeHTML(project.date)}</span>
           </div>
           <div class="project-org">${escapeHTML(project.org)}</div>
+          ${project.category ? `<span class="category-badge">${escapeHTML(project.category)}</span>` : ""}
           <p class="project-desc">${escapeHTML(project.description)}</p>
           <div class="tag-row">${tagsHTML}</div>
         </div>
@@ -152,6 +172,14 @@
   // ---------------------------------------------------------------------
   // Skills
   // ---------------------------------------------------------------------
+  function renderCoreSkills(data) {
+    const row = document.getElementById("coreSkillsRow");
+    row.innerHTML = "";
+    (data.coreSkills || []).forEach((skill) => {
+      row.appendChild(el(`<span class="pill pill-core">${escapeHTML(skill)}</span>`));
+    });
+  }
+
   function renderSkills(data) {
     const grid = document.getElementById("skillsGrid");
     grid.innerHTML = "";
@@ -223,6 +251,43 @@
         `)
       );
     });
+  }
+
+  // ---------------------------------------------------------------------
+  // Clients & Testimonials — section stays hidden until real data exists
+  // ---------------------------------------------------------------------
+  function renderClients(data) {
+    const clients = data.clients || [];
+    const section = document.getElementById("clients");
+    const navItem = document.getElementById("navClientsItem");
+    if (!clients.length) {
+      section.hidden = true;
+      navItem.hidden = true;
+      return;
+    }
+
+    const grid = document.getElementById("clientGrid");
+    grid.innerHTML = "";
+    clients.forEach((client) => {
+      grid.appendChild(
+        el(`
+          <div class="client-card" data-animate>
+            <div class="client-card-head">
+              <img class="client-logo" src="${escapeHTML(client.logo)}" alt="${escapeHTML(client.name)} logo">
+              <div>
+                <div class="client-name">${escapeHTML(client.name)}</div>
+                <div class="client-meta">${escapeHTML(client.project)} · ${escapeHTML(client.date)}</div>
+              </div>
+            </div>
+            <p class="client-quote">“${escapeHTML(client.quote)}”</p>
+            <div class="client-author">${escapeHTML(client.author)} <span>— ${escapeHTML(client.role)}</span></div>
+          </div>
+        `)
+      );
+    });
+
+    section.hidden = false;
+    navItem.hidden = false;
   }
 
   // ---------------------------------------------------------------------
@@ -335,9 +400,11 @@
     renderAbout(data);
     renderExperience(data);
     renderProjects(data);
+    renderCoreSkills(data);
     renderSkills(data);
     renderEducation(data);
     renderCertifications(data);
+    renderClients(data);
     renderContact(data);
     renderFooter(data);
 

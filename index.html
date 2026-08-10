@@ -25,6 +25,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li id="navClientsItem" hidden><a href="#clients">Clients</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -96,6 +97,7 @@
         <h2 class="section-heading">Projects</h2>
         <p class="section-sub">Dashboards, automations, and analyses shipped for real business decisions. Newest first — this list updates as new work ships.</p>
       </div>
+      <div class="filter-row" id="projectFilters"></div>
       <div class="project-grid" id="projectGrid"></div>
     </div>
   </section>
@@ -107,7 +109,22 @@
         <span class="eyebrow">Toolbox</span>
         <h2 class="section-heading">Skills & Tools</h2>
       </div>
+      <div class="core-skills-block" data-animate>
+        <span class="core-skills-label">Core toolkit</span>
+        <div class="pill-row" id="coreSkillsRow"></div>
+      </div>
       <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================= CLIENTS ============================= -->
+  <section id="clients" class="section-pad" hidden>
+    <div class="container">
+      <div class="section-head" data-animate>
+        <span class="eyebrow">Client Work</span>
+        <h2 class="section-heading">Clients & Testimonials</h2>
+      </div>
+      <div class="client-grid" id="clientGrid"></div>
     </div>
   </section>
 
