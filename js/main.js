@@ -105,7 +105,6 @@
       `${ICONS.location}<span>${escapeHTML(profile.location)} Based</span>`;
 
     const resumeHref = profile.resumeFile || "#";
-    document.getElementById("resumeBtnNav").href = resumeHref;
     document.getElementById("resumeBtnHero").href = resumeHref;
 
     const social = document.getElementById("heroSocial");
@@ -250,7 +249,6 @@
               <span class="project-date">${escapeHTML(project.date)}</span>
             </div>
             <div class="project-org">${escapeHTML(project.org)}</div>
-            ${project.category ? `<span class="category-badge">${escapeHTML(project.category)}</span>` : ""}
             <p class="project-desc">${escapeHTML(project.description)}</p>
             <div class="tag-row">${tagsHTML}</div>
           </div>
@@ -341,29 +339,36 @@
     });
   }
 
-  function renderCertifications(data) {
+  function renderCertifications(data, lightbox) {
     const grid = document.getElementById("certGrid");
     grid.innerHTML = "";
     data.certifications.forEach((cert) => {
-      const badge = cert.image
-        ? `<img src="${escapeHTML(cert.image)}" alt="${escapeHTML(cert.name)} badge">`
-        : ICONS.certificate;
+      const thumbStyle = cert.image ? ` style="background-image:url('${escapeHTML(cert.image)}')"` : "";
+      const thumbInner = cert.image ? "" : ICONS.certificate;
 
-      const viewLink = cert.certUrl
-        ? `<a class="cert-view" href="${escapeHTML(cert.certUrl)}" target="_blank" rel="noopener">View Certificate</a>`
-        : `<span class="cert-view cert-view-disabled">View Certificate</span>`;
-
-      grid.appendChild(
-        el(`
-          <div class="cert-card" data-animate>
-            <div class="cert-badge">${badge}</div>
+      const card = el(`
+        <div class="cert-card" data-animate>
+          <div class="cert-thumb"${thumbStyle}>${thumbInner}</div>
+          <div class="cert-card-body">
             <div class="cert-name">${escapeHTML(cert.name)}</div>
             <div class="cert-issuer">${escapeHTML(cert.issuer)}</div>
             <div class="cert-date">${escapeHTML(cert.date)}</div>
-            ${viewLink}
+            ${
+              cert.image
+                ? `<button type="button" class="cert-view">View Certificate</button>`
+                : `<span class="cert-view cert-view-disabled">View Certificate</span>`
+            }
           </div>
-        `)
-      );
+        </div>
+      `);
+
+      if (cert.image) {
+        const openPreview = () => lightbox.open(cert.image, cert.name);
+        card.querySelector(".cert-thumb").addEventListener("click", openPreview);
+        card.querySelector(".cert-view").addEventListener("click", openPreview);
+      }
+
+      grid.appendChild(card);
     });
   }
 
@@ -441,6 +446,54 @@
   function renderFooter(data) {
     const year = new Date().getFullYear();
     document.getElementById("footerText").textContent = `© ${year} ${data.profile.name}.`;
+  }
+
+  // ---------------------------------------------------------------------
+  // Certificate lightbox
+  // ---------------------------------------------------------------------
+  function setupLightbox() {
+    const box = document.getElementById("lightbox");
+    const img = document.getElementById("lightboxImg");
+    const closeBtn = document.getElementById("lightboxClose");
+
+    function close() {
+      box.hidden = true;
+      img.src = "";
+      document.body.style.overflow = "";
+    }
+
+    function open(src, alt) {
+      img.src = src;
+      img.alt = alt;
+      box.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+
+    closeBtn.addEventListener("click", close);
+    box.addEventListener("click", (e) => {
+      if (e.target === box) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !box.hidden) close();
+    });
+
+    return { open, close };
+  }
+
+  // ---------------------------------------------------------------------
+  // Carousel arrows — scroll the matching track by roughly one card width
+  // ---------------------------------------------------------------------
+  function setupCarousels() {
+    document.querySelectorAll(".carousel-arrow").forEach((btn) => {
+      const track = document.getElementById(btn.dataset.target);
+      if (!track) return;
+      const direction = btn.classList.contains("carousel-prev") ? -1 : 1;
+      btn.addEventListener("click", () => {
+        const card = track.querySelector(":scope > *");
+        const step = card ? card.getBoundingClientRect().width + 20 : 320;
+        track.scrollBy({ left: direction * step, behavior: "smooth" });
+      });
+    });
   }
 
   // ---------------------------------------------------------------------
@@ -540,6 +593,8 @@
       return;
     }
 
+    const lightbox = setupLightbox();
+
     renderHero(data);
     renderBrand(data);
     renderAbout(data);
@@ -548,13 +603,14 @@
     renderCoreSkills(data);
     renderSkills(data);
     renderEducation(data);
-    renderCertifications(data);
+    renderCertifications(data, lightbox);
     renderClients(data);
     renderContact(data);
     renderFooter(data);
 
     setupTheme();
     setupNav();
+    setupCarousels();
     // Re-run animation setup after dynamic content is in the DOM.
     setupAnimations();
   }

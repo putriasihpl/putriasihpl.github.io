@@ -39,7 +39,6 @@
     </ul>
     <div class="nav-cta">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode"></button>
-      <a class="btn btn-ghost" id="resumeBtnNav" href="#" download>View CV</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
         <span></span>
       </button>
@@ -113,7 +112,15 @@
         <p class="section-sub">Dashboards, automations, and analyses shipped for real business decisions. Newest first — this list updates as new work ships.</p>
       </div>
       <div class="filter-row" id="projectFilters"></div>
-      <div class="project-grid" id="projectGrid"></div>
+      <div class="carousel-wrap">
+        <button class="carousel-arrow carousel-prev" data-target="projectGrid" aria-label="Scroll left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="project-grid carousel-track" id="projectGrid"></div>
+        <button class="carousel-arrow carousel-next" data-target="projectGrid" aria-label="Scroll right">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -164,9 +171,25 @@
         <span class="eyebrow">Credentials</span>
         <h2 class="section-heading">Certifications</h2>
       </div>
-      <div class="cert-grid" id="certGrid"></div>
+      <div class="carousel-wrap">
+        <button class="carousel-arrow carousel-prev" data-target="certGrid" aria-label="Scroll left">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <div class="cert-grid carousel-track" id="certGrid"></div>
+        <button class="carousel-arrow carousel-next" data-target="certGrid" aria-label="Scroll right">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
     </div>
   </section>
+
+  <!-- ============================= CERT LIGHTBOX ============================= -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
 
   <!-- ============================= CONTACT ============================= -->
   <section id="contact" class="section-pad">
