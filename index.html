@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Putri Asih Puji Lestari — Data Analyst</title>
+<meta name="description" content="Portfolio of Putri Asih Puji Lestari, a Data Analyst specializing in dashboard development, reporting automation, and business intelligence." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%2290%22 height=%2290%22 x=%225%22 y=%225%22 rx=%2222%22 fill=%22%232a78d6%22/><text x=%2250%22 y=%2266%22 font-size=%2250%22 font-family=%22Arial,Helvetica,sans-serif%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>P</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ============================= NAVBAR ============================= -->
+<header class="navbar">
+  <nav class="container nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="mark">PA</span>
+      <span>Putri Asih</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" id="resumeBtnNav" href="#" download>Download CV</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============================= HERO ============================= -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-kicker"><span class="dot"></span> <span id="heroOpenTo">Open to new opportunities</span></span>
+        <h1 id="heroName">Putri Asih Puji <span>Lestari</span></h1>
+        <p class="hero-role" id="heroRole">Data Analyst · Business Intelligence</p>
+        <p class="hero-summary" id="heroSummary"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" id="resumeBtnHero" href="#" download>Download CV</a>
+        </div>
+        <div class="hero-contacts" id="heroContacts"></div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-photo">
+          <!-- Ganti dengan foto asli: <img src="assets/profile.jpg" alt="Putri Asih Puji Lestari"> -->
+          <span class="placeholder-initials">PA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= ABOUT ============================= -->
+  <section id="about" class="section-pad">
+    <div class="container">
+      <div class="section-head" data-animate>
+        <span class="eyebrow">About Me</span>
+        <h2 class="section-heading">Turning raw data into decisions</h2>
+      </div>
+      <div class="about-grid">
+        <p class="about-text" id="aboutSummary" data-animate></p>
+        <div class="stats-row" id="statsRow" data-animate></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= EXPERIENCE ============================= -->
+  <section id="experience" class="section-pad">
+    <div class="container">
+      <div class="section-head" data-animate>
+        <span class="eyebrow">Career Journey</span>
+        <h2 class="section-heading">Work Experience</h2>
+        <p class="section-sub">A track record of building dashboards, automating reporting, and turning data into decisions across airport operations, fintech, FMCG, and retail.</p>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- ============================= PROJECTS ============================= -->
+  <section id="projects" class="section-pad">
+    <div class="container">
+      <div class="section-head" data-animate>
+        <span class="eyebrow">Selected Work</span>
+        <h2 class="section-heading">Projects</h2>
+        <p class="section-sub">Dashboards, automations, and analyses shipped for real business decisions. Newest first — this list updates as new work ships.</p>
+      </div>
+      <div class="project-grid" id="projectGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================= SKILLS ============================= -->
+  <section id="skills" class="section-pad">
+    <div class="container">
+      <div class="section-head" data-animate>
+        <span class="eyebrow">Toolbox</span>
+        <h2 class="section-heading">Skills & Tools</h2>
+      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============================= EDUCATION / CERTS / ORGS ============================= -->
+  <section id="education" class="section-pad">
+    <div class="container">
+      <div class="section-head" data-animate>
+        <span class="eyebrow">Background</span>
+        <h2 class="section-heading">Education & Certifications</h2>
+      </div>
+      <div class="two-col">
+        <div>
+          <div id="educationList"></div>
+          <div style="margin-top: 28px;">
+            <h3 style="font-size:0.95rem; font-weight:700; margin-bottom:14px;">Organizations & Volunteering</h3>
+            <div id="organizationsList"></div>
+          </div>
+        </div>
+        <div class="cert-list" id="certList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CONTACT ============================= -->
+  <section id="contact" class="section-pad">
+    <div class="container">
+      <div class="contact-panel" data-animate>
+        <div>
+          <h2>Let's work together</h2>
+          <p>Have a dashboard to build, a report to automate, or a dataset that needs a story? I'd love to hear about it.</p>
+        </div>
+        <div class="contact-links" id="contactLinks"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p id="footerText"></p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
