@@ -236,17 +236,19 @@
   }
 
   function renderCertifications(data) {
-    const list = document.getElementById("certList");
-    list.innerHTML = "";
+    const grid = document.getElementById("certGrid");
+    grid.innerHTML = "";
     data.certifications.forEach((cert) => {
-      list.appendChild(
+      const badge = cert.image
+        ? `<img src="${escapeHTML(cert.image)}" alt="${escapeHTML(cert.name)} badge">`
+        : ICONS.certificate;
+
+      grid.appendChild(
         el(`
-          <div class="cert-item" data-animate>
-            <span class="cert-icon">${ICONS.certificate}</span>
-            <div>
-              <div class="cert-name">${escapeHTML(cert.name)}</div>
-              <div class="cert-issuer">${escapeHTML(cert.issuer)}</div>
-            </div>
+          <div class="cert-card" data-animate>
+            <div class="cert-badge">${badge}</div>
+            <div class="cert-name">${escapeHTML(cert.name)}</div>
+            <div class="cert-issuer">${escapeHTML(cert.issuer)}</div>
           </div>
         `)
       );

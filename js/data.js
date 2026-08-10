@@ -264,12 +264,14 @@ window.PORTFOLIO_DATA = {
     },
   ],
 
+  // `image` -> path ke badge/logo sertifikasi di assets/certifications/ (mis. "assets/certifications/power-bi.png").
+  // Kosongkan "" kalau belum ada gambarnya — otomatis dipakaikan ikon sertifikat default.
   certifications: [
-    { name: "Microsoft Power BI Data Analyst", issuer: "Coursera" },
-    { name: "Business Intelligence Professional", issuer: "Google" },
-    { name: "Data Analyst Essential", issuer: "CISCO" },
-    { name: "Data Administrator", issuer: "BNSP" },
-    { name: "Hacker Rank Advance (SQL)", issuer: "HackerRank" },
+    { name: "Microsoft Power BI Data Analyst", issuer: "Coursera", image: "" },
+    { name: "Business Intelligence Professional", issuer: "Google", image: "" },
+    { name: "Data Analyst Essential", issuer: "CISCO", image: "" },
+    { name: "Data Administrator", issuer: "BNSP", image: "" },
+    { name: "Hacker Rank Advance (SQL)", issuer: "HackerRank", image: "" },
   ],
 
   // Section "Clients & Testimonials" hanya muncul di halaman kalau array ini terisi.
