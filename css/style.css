@@ -343,12 +343,10 @@ section {
   margin-bottom: 22px;
 }
 
-.hero-kicker .dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #0ca30c;
-  box-shadow: 0 0 0 3px rgba(12, 163, 12, 0.15);
+.hero-kicker svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 .hero h1 {
@@ -357,17 +355,6 @@ section {
   letter-spacing: -0.02em;
   line-height: 1.12;
   margin-bottom: 16px;
-}
-
-.hero h1 span {
-  color: var(--accent);
-}
-
-.hero-role {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--ink-secondary);
-  margin-bottom: 18px;
 }
 
 .hero-summary {
@@ -383,26 +370,31 @@ section {
   margin-bottom: 36px;
 }
 
-.hero-contacts {
+.hero-social {
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px 26px;
+  gap: 12px;
 }
 
-.hero-contacts a,
-.hero-contacts span {
-  display: inline-flex;
+.hero-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent-dark);
+  color: #fff;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-  color: var(--ink-secondary);
+  justify-content: center;
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 
-.hero-contacts svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  color: var(--accent);
+.hero-social a:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+
+.hero-social svg {
+  width: 18px;
+  height: 18px;
 }
 
 .hero-contacts a:hover {
@@ -414,13 +406,12 @@ section {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
-  padding: 8px;
+  overflow: hidden;
 }
 
 .hero-photo {
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: calc(var(--radius-lg) - 4px);
   background: linear-gradient(155deg, var(--accent-tint), var(--surface-sunken));
   display: flex;
   align-items: center;
@@ -439,6 +430,22 @@ section {
   font-weight: 800;
   color: var(--accent);
   opacity: 0.35;
+}
+
+.hero-card-caption {
+  padding: 20px 22px;
+  text-align: center;
+}
+
+.hero-card-caption h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hero-card-caption p {
+  font-size: 0.86rem;
+  color: var(--ink-muted);
 }
 
 @media (max-width: 860px) {

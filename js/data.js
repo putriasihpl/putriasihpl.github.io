@@ -24,6 +24,10 @@ window.PORTFOLIO_DATA = {
     email: "putriasihpujilestari@gmail.com",
     phone: "082242994021",
     phoneHref: "+6282242994021",
+    // Dipakai untuk badge kecil di atas heading di Hero, mis. "Data Analyst | BI | Dashboard Development".
+    badge: "Data Analyst | BI | Dashboard Development",
+    // Heading besar (H1) di Hero — kalimat value-proposition, bukan nama (nama tampil di bawah foto).
+    headline: "Business intelligence and data analytics portfolio.",
     // TODO: ganti "#" dengan URL asli akun kamu.
     links: {
       linkedin: "#",
@@ -33,6 +37,9 @@ window.PORTFOLIO_DATA = {
     },
     // Taruh file CV kamu di folder assets/ dengan nama ini agar tombol "Download CV" berfungsi.
     resumeFile: "assets/Putri_Asih_Puji_Lestari_Resume.pdf",
+    // Satu kalimat pendek yang tampil di Hero, di bawah nama.
+    heroLine:
+      "I build dashboards, automate reporting, and turn messy data into decisions executives actually act on.",
     summary:
       "Mid–Senior Data Analyst professional based in Jakarta, Indonesia, with expertise in transforming complex data into objective, data-driven insights that empower executive decision-making. Skilled in data analytics, dashboard development, reporting automation, and business intelligence using SQL, Power BI, Tableau, Looker, Excel, and Python to deliver actionable recommendations aligned with business objectives.",
     // Dipakai di section About — sengaja beda dari `summary` di atas (yang dipakai di Hero)
