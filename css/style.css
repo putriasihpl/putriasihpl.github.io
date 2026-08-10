@@ -126,6 +126,7 @@ section {
   align-items: center;
   gap: 8px;
   padding: 12px 22px;
+  line-height: 1;
   border-radius: var(--radius-md);
   font-size: 0.94rem;
   font-weight: 600;
@@ -158,6 +159,12 @@ section {
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent-dark);
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -309,7 +316,7 @@ section {
    Hero
    ========================================================================== */
 .hero {
-  padding: 168px 0 96px;
+  padding: 100px 0 48px;
   position: relative;
   overflow: hidden;
 }
@@ -397,11 +404,8 @@ section {
   height: 18px;
 }
 
-.hero-contacts a:hover {
-  color: var(--accent-dark);
-}
-
 .hero-card {
+  position: relative;
   background: var(--surface-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -412,40 +416,32 @@ section {
 .hero-photo {
   width: 100%;
   aspect-ratio: 4 / 5;
-  background: linear-gradient(155deg, var(--accent-tint), var(--surface-sunken));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-photo img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-}
-
-.hero-photo .placeholder-initials {
-  font-size: 4rem;
-  font-weight: 800;
-  color: var(--accent);
-  opacity: 0.35;
+  display: block;
+  background: linear-gradient(155deg, var(--accent-tint), var(--surface-sunken));
 }
 
 .hero-card-caption {
-  padding: 20px 22px;
-  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px 22px 20px;
+  background: linear-gradient(to top, rgba(8, 10, 14, 0.78) 0%, rgba(8, 10, 14, 0.32) 65%, transparent 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .hero-card-caption h2 {
   font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 4px;
+  color: #fff;
 }
 
 .hero-card-caption p {
   font-size: 0.86rem;
-  color: var(--ink-muted);
+  color: rgba(255, 255, 255, 0.82);
 }
 
 @media (max-width: 860px) {

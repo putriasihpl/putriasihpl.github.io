@@ -24,13 +24,13 @@ window.PORTFOLIO_DATA = {
     email: "putriasihpujilestari@gmail.com",
     phone: "082242994021",
     phoneHref: "+6282242994021",
-    // Dipakai untuk badge kecil di atas heading di Hero, mis. "Data Analyst | BI | Dashboard Development".
-    badge: "Data Analyst | BI | Dashboard Development",
+    // Dipakai untuk badge kecil di atas heading di Hero.
+    badge: "Turning Data Into Insight",
     // Heading besar (H1) di Hero — kalimat value-proposition, bukan nama (nama tampil di bawah foto).
     headline: "Business intelligence and data analytics portfolio.",
     // TODO: ganti "#" dengan URL asli akun kamu.
     links: {
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/putriasihpl/",
       github: "#",
       portfolioShowcase:
         "https://mavenshowcase.com/profile/28e1c350-3071-70a0-1f5d-bceab872004f",
