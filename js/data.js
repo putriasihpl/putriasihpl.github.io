@@ -15,7 +15,7 @@
  * ============================================================================
  */
 
-const PORTFOLIO_DATA = {
+window.PORTFOLIO_DATA = {
   profile: {
     name: "Putri Asih Puji Lestari",
     title: "Data Analyst",
