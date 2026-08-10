@@ -20,6 +20,8 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.5 1.3l3-3a4 4 0 0 0-5.6-5.6l-1.4 1.3"/><path d="M14 10a4 4 0 0 0-5.5-1.3l-3 3a4 4 0 0 0 5.6 5.6l1.3-1.3"/></svg>',
     certificate:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5.5"/><path d="M9 12.5 7.5 21l4.5-2.5 4.5 2.5-1.5-8.5"/></svg>',
+    graduationCap:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5-10-5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/><path d="M22 8v6"/></svg>',
   };
 
   function el(html) {
@@ -207,12 +209,20 @@
     const eduList = document.getElementById("educationList");
     eduList.innerHTML = "";
     data.education.forEach((edu) => {
+      const logo = edu.logo
+        ? `<img src="${escapeHTML(edu.logo)}" alt="${escapeHTML(edu.school)} logo">`
+        : ICONS.graduationCap;
+
       eduList.appendChild(
         el(`
-          <div class="info-card" data-animate>
-            <h3>${escapeHTML(edu.school)}</h3>
-            <div class="info-meta">${escapeHTML(edu.degree)} — ${escapeHTML(edu.location)}</div>
-            <div class="info-period">${escapeHTML(edu.period)}${edu.detail ? " · " + escapeHTML(edu.detail) : ""}</div>
+          <div class="edu-card" data-animate>
+            <span class="edu-logo">${logo}</span>
+            <div class="edu-body">
+              <div class="edu-period">${escapeHTML(edu.period)}</div>
+              <div class="edu-degree">${escapeHTML(edu.degree)}</div>
+              <div class="edu-school">${escapeHTML(edu.school)}</div>
+              ${edu.detail ? `<div class="edu-detail">${escapeHTML(edu.detail)}</div>` : ""}
+            </div>
           </div>
         `)
       );

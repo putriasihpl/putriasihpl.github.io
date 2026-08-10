@@ -254,6 +254,8 @@ window.PORTFOLIO_DATA = {
     },
   ],
 
+  // `logo` -> path ke logo kampus di assets/image/ (mis. "assets/image/ump.png").
+  // Kosongkan "" kalau belum ada gambarnya — otomatis dipakaikan ikon default.
   education: [
     {
       school: "Muhammadiyah University of Purwokerto",
@@ -261,6 +263,7 @@ window.PORTFOLIO_DATA = {
       degree: "Informatics Engineering",
       period: "Feb 2024",
       detail: "Current IPK: 3.52 / 4.00",
+      logo: "assets/image/ump.png",
     },
   ],
 
