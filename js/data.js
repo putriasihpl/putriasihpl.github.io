@@ -28,6 +28,8 @@ window.PORTFOLIO_DATA = {
     badge: "Turning Data Into Insight",
     // Heading besar (H1) di Hero — kalimat value-proposition, bukan nama (nama tampil di bawah foto).
     headline: "Business intelligence and data analytics portfolio.",
+    // Badge kecil berwarna di card foto Hero, di bawah nama.
+    experienceBadge: "4+ Years Experience",
     // TODO: ganti "#" dengan URL asli akun kamu.
     links: {
       linkedin: "https://www.linkedin.com/in/putriasihpl/",

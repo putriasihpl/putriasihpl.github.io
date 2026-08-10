@@ -26,6 +26,8 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
     whatsapp:
       '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.27 4.86L2 22l5.32-1.31a9.9 9.9 0 0 0 4.72 1.2h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.8 14.2c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.16-4.93-4.35-.14-.19-1.19-1.58-1.19-3.01 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.47.13.65-.05.18-.18.72-.84.91-1.13.19-.29.38-.24.63-.15.26.1 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.35z"/></svg>',
+    linkedinBadge:
+      '<svg viewBox="0 0 448 512" fill="currentColor"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-338a53.34 53.34 0 1 1 53.33-53.33A53.34 53.34 0 0 1 53.84 110zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.28 61.9 111.28 142.3z"/></svg>',
   };
 
   function el(html) {
@@ -49,7 +51,9 @@
     document.getElementById("heroName").textContent = profile.headline;
     document.getElementById("heroSummary").textContent = profile.heroLine || profile.summary;
     document.getElementById("heroCardName").textContent = profile.name;
-    document.getElementById("heroCardLocation").textContent = `${profile.location} Based`;
+    document.getElementById("heroCardExperience").textContent = profile.experienceBadge;
+    document.getElementById("heroCardLocation").innerHTML =
+      `${ICONS.location}<span>${escapeHTML(profile.location)} Based</span>`;
 
     const resumeHref = profile.resumeFile || "#";
     document.getElementById("resumeBtnNav").href = resumeHref;
@@ -59,7 +63,7 @@
     social.innerHTML = "";
     if (profile.links.linkedin && profile.links.linkedin !== "#") {
       social.appendChild(
-        el(`<a href="${escapeHTML(profile.links.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>`)
+        el(`<a class="linkedin-badge" href="${escapeHTML(profile.links.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedinBadge}</a>`)
       );
     }
     social.appendChild(

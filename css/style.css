@@ -331,10 +331,13 @@ section {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.7fr;
+  display: flex;
   gap: 56px;
-  align-items: center;
+  align-items: stretch;
+}
+
+.hero-copy {
+  flex: 1.1 1 0%;
 }
 
 .hero-kicker {
@@ -404,7 +407,22 @@ section {
   height: 18px;
 }
 
+.hero-social a.linkedin-badge {
+  border-radius: 8px;
+  background: #0a66c2;
+}
+
+.hero-social a.linkedin-badge:hover {
+  background: #0a5cad;
+}
+
+.hero-social a.linkedin-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
 .hero-card {
+  flex: 0.7 1 0%;
   position: relative;
   background: var(--surface-card);
   border: 1px solid var(--border);
@@ -414,8 +432,10 @@ section {
 }
 
 .hero-photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
   display: block;
   background: linear-gradient(155deg, var(--accent-tint), var(--surface-sunken));
@@ -423,38 +443,67 @@ section {
 
 .hero-card-caption {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 26px 22px 20px;
-  background: linear-gradient(to top, rgba(8, 10, 14, 0.78) 0%, rgba(8, 10, 14, 0.32) 65%, transparent 100%);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 16px 18px;
+  background: rgba(20, 22, 28, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
 
 .hero-card-caption h2 {
   font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   color: #fff;
 }
 
-.hero-card-caption p {
+.hero-exp-badge {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #4a2e00;
+  background: #f2b544;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.hero-card-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-card-location svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 860px) {
   .hero {
-    padding-top: 132px;
+    padding-top: 90px;
   }
   .hero-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  .hero-copy {
+    flex: none;
+    width: 100%;
   }
   .hero-card {
+    flex: none;
+    width: 100%;
     max-width: 280px;
     margin: 0 auto;
-    justify-self: center;
+    aspect-ratio: 4 / 5;
   }
 }
 
