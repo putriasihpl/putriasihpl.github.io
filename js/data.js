@@ -261,7 +261,7 @@ window.PORTFOLIO_DATA = {
       school: "Muhammadiyah University of Purwokerto",
       location: "Purwokerto, Central Java, Indonesia",
       degree: "Informatics Engineering",
-      period: "Feb 2024",
+      period: "2024",
       detail: "Current IPK: 3.52 / 4.00",
       logo: "assets/image/ump.png",
     },
