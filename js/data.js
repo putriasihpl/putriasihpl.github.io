@@ -29,7 +29,12 @@ window.PORTFOLIO_DATA = {
     // Heading besar (H1) di Hero — kalimat value-proposition, bukan nama (nama tampil di bawah foto).
     headline: "Business intelligence and data analytics portfolio.",
     // Badge kecil berwarna di card foto Hero, di bawah nama.
-    experienceBadge: "4+ Years Experience",
+    experienceBadge: "3+ Years Experience",
+    // Logo untuk navbar — otomatis ganti sesuai tema terang/gelap.
+    // Taruh 2 file di assets/image/ dengan nama ini: logo untuk dipakai di atas
+    // background TERANG (logoLight) dan untuk background GELAP (logoDark).
+    logoLight: "assets/image/logo-light.png",
+    logoDark: "assets/image/logo-dark.png",
     // TODO: ganti "#" dengan URL asli akun kamu.
     links: {
       linkedin: "https://www.linkedin.com/in/putriasihpl/",
@@ -44,18 +49,16 @@ window.PORTFOLIO_DATA = {
       "I build dashboards, automate reporting, and turn messy data into decisions executives actually act on.",
     summary:
       "Mid–Senior Data Analyst professional based in Jakarta, Indonesia, with expertise in transforming complex data into objective, data-driven insights that empower executive decision-making. Skilled in data analytics, dashboard development, reporting automation, and business intelligence using SQL, Power BI, Tableau, Looker, Excel, and Python to deliver actionable recommendations aligned with business objectives.",
-    // Dipakai di section About — sengaja beda dari `summary` di atas (yang dipakai di Hero)
-    // supaya orang yang scroll lewat Hero tetap dapat informasi baru, bukan kalimat yang diulang.
+    // Dipakai di section About — ringkas & konkret, tanpa melebih-lebihkan.
     about:
-      "Most of Putri's work starts with a workflow that's quietly broken — a monthly report that takes 15 days to prepare, a manual allocation process eating 30 minutes every morning — and ends with that workflow redesigned, not just visualized. That process-first lens turned a routine Power BI migration at PT Jasa Angkasa Semesta into a 66% cut in reporting time, and a DMAIC-based collection strategy at Astra Welab into a 50% uplift in repayment rates. She's carried that lens across airport operations, fintech, FMCG, and retail, and now mentors aspiring analysts at Dealls on building the same habit.",
+      "Putri fixes broken workflows, not just builds dashboards — a 15-day report became 5 days at PT Jasa Angkasa Semesta, and a DMAIC-based collection strategy lifted repayment rates 50% at Astra Welab. She's done this across airport operations, fintech, FMCG, and retail, and now mentors junior analysts at Dealls.",
   },
 
   // Angka ringkasan yang tampil sebagai "stat tiles" di bagian About.
   stats: [
-    { value: "4+", label: "Years of Experience" },
+    { value: "3+", label: "Years of Experience" },
     { value: "15+", label: "Dashboards Managed" },
-    { value: "66%", label: "Faster Monthly Reporting" },
-    { value: "500+", label: "Portfolios Automated / Cycle" },
+    { value: "10+", label: "Portfolio" },
   ],
 
   experience: [
@@ -66,14 +69,8 @@ window.PORTFOLIO_DATA = {
       period: "Oct 2025 – Present",
       current: true,
       bullets: [
-        "Led cross department dashboard development using Power BI and project management for migration and redevelopment initiatives in the Microsoft Fabric environment, prioritising workload and steering change management activities to ensure seamless rollout, delivering high impact data visualisation for executive decision making.",
-        "Implemented process improvement and problem solving techniques to cut Operational Monthly Report preparation time by 66% (from 15 to 5 days), significantly enhancing data reporting efficiency by rebuilding data models and conducting data literacy workshops, resulting in increased stakeholder adoption and improved decision-making quality.",
-        "Developed Google Apps Script-based operational input systems in Google Sheets, leveraging advanced spreadsheet logic and automation to streamline data entry and validation workflows.",
-        "Managed and maintained 15 operational dashboards covering Cargo Handling, Ground Handling, SLA Airlines, Company Product Services, GSE Serviceability and Weekly or Monthly performance reports, communicating findings and delivering presentations to key stakeholders to drive data driven decisions.",
-        "Authored comprehensive technical documentation and user guides for the Microsoft Fabric dashboard migration, streamlining onboarding for cross-functional teams.",
-        "Implemented robust data quality protocols for manual reporting workflows, consolidating regional inputs into a centralized repository while performing rigorous data type verification to prevent transformation failures.",
-        "Proactively adapted to evolving technical requirements by cleansing and transforming complex datasets during system migrations, ensuring data integrity and validation throughout the transition to new cloud-based environments.",
-        "Integrated AI-powered summaries into monthly performance dashboards to synthesize complex KPI data from Ground and Cargo Handling, enabling rapid, data-backed decision making for senior leadership.",
+        "Cut Operational Monthly Report preparation time by 66% (from 15 to 5 days) by rebuilding data models and running data literacy workshops.",
+        "Manage 15 operational dashboards across Cargo Handling, Ground Handling, SLA Airlines, and Company Product Services, presenting findings to key stakeholders.",
       ],
     },
     {
@@ -82,15 +79,8 @@ window.PORTFOLIO_DATA = {
       location: "Jakarta Selatan",
       period: "Feb 2025 – Sep 2025",
       bullets: [
-        "Designed and engineered operational and executive dashboards using SQL, performing data analysis and data visualisation to deliver actionable insights, thereby developing robust dashboard solutions.",
-        "Built Python-based automation for daily desk collection task assignments.",
-        "Created automated data integration workflows from BigQuery to Google Spreadsheet.",
-        "Developed and executed recurring monthly strategies prioritized by specific data requirements and management decisions to optimize account management and business performance.",
-        "Facilitated direct stakeholder management by presenting field reports and performance metrics to executive leadership, translating complex business needs into actionable data driven initiatives.",
-        "Executed high-impact customer profiling analysis that provided a comprehensive overview of customer data, enabling leadership to prioritize key segments and accelerate strategic initiative implementation.",
-        "Collaborated with cross functional teams to identify business requirements and communicate data driven solutions that addressed specific operational bottlenecks.",
-        "Analyzed complex customer behavior patterns and created predictive profiles to forecast payment timelines, directly informing strategic business decisions and risk management.",
-        "Managed external vendor relationships for a WhatsApp Blast application, overseeing budget allocation, coordinating meetings, and facilitating direct communication with vendor PICs to ensure seamless service delivery and alignment with business requirements.",
+        "Designed operational and executive dashboards using SQL, turning data analysis into actionable insights for account management.",
+        "Built customer profiling and predictive payment-propensity models to forecast repayment timelines and inform collection strategy.",
       ],
     },
     {
@@ -99,8 +89,7 @@ window.PORTFOLIO_DATA = {
       location: "Remote",
       period: "Nov 2024 – Jan 2026",
       bullets: [
-        "Mentored aspiring data professionals by providing personalized guidance.",
-        "Designed structured learning roadmaps and recommended practical resources.",
+        "Mentored aspiring data analysts with structured learning roadmaps and personalized guidance on practical BI skills.",
       ],
     },
     {
@@ -109,12 +98,8 @@ window.PORTFOLIO_DATA = {
       location: "Jakarta Selatan",
       period: "May 2024 – Nov 2024",
       bullets: [
-        "Supported the data engineering of an end to end LSP system, architecting database solutions and establishing data integrity controls and quality assessment processes.",
-        "Explored, evaluated, and analyzed various BI and IT solutions.",
-        "Performed data cleaning, transformation, and visualisation, implementing data quality assessment and integrity checks to guarantee reliable outputs for Tableau and Sisense dashboards.",
-        "Contributed to solution architecture by designing the data flow and integration layer for the LSP system, aligning technical components with business requirements.",
-        "Supported the development, evaluation, and ongoing dataset maintenance for multiple operational systems, ensuring high standards of data consistency, completeness, and accuracy.",
-        "Developed and enforced data governance documentation and standardized workflows to ensure compliance with company and regulatory requirements across all data management activities.",
+        "Supported end-to-end data engineering for an LSP system, architecting database solutions and data integrity controls.",
+        "Delivered reliable Tableau and Sisense dashboards through rigorous data cleaning, transformation, and quality checks.",
       ],
     },
     {
@@ -123,11 +108,8 @@ window.PORTFOLIO_DATA = {
       location: "Purwokerto",
       period: "August 2023 – Feb 2024",
       bullets: [
-        "Contributed to data-driven strategies that resulted in a 10% increase in customer retention.",
-        "Created and implemented multiple dashboard development projects including KPI Dashboard, Volume Waters Performance, and Active and Register Outlet Monitoring, delivering data visualisation that provided real-time insights to management.",
-        "Leveraged Excel with Power Query to consolidate, transform, and validate regional operational datasets, streamlining data preparation for dashboard reporting and ad-hoc analysis.",
-        "Collaborated closely with the Area Sales Manager to monitor and support the Sales team's performance across the Central Java region, using data insights to guide field strategy and outlet coverage.",
-        "Coordinated with the Distributor Manager during dashboard development to improve data validation and ensure the accuracy and reliability of reported figures.",
+        "Drove data-driven strategies that increased customer retention by 10% across the Central Java region.",
+        "Built KPI, Volume Performance, and Outlet Monitoring dashboards using Excel and Power Query for real-time management insight.",
       ],
     },
     {
@@ -136,17 +118,17 @@ window.PORTFOLIO_DATA = {
       location: "Jakarta, Indonesia",
       period: "Feb 2023 – Jun 2023",
       bullets: [
-        "Performed comprehensive competitor analysis to navigate intense market competition in pop-up and email marketing campaigns, leveraging market trends and competitor strategies to drive more effective campaign execution.",
-        "Conducted A/B testing and analyzed customer data from iBox, JD Sport, and Eraspace to increase customer engagement and optimize marketing performance.",
-        "Improved the Online to Offline (O2O) Monitoring dashboard for Erajaya using Looker, pulling data from Salesforce to track the customer journey from ad impressions to conversion.",
-        "Identified customers who completed offline purchases as a result of website advertising, enabling real-time performance tracking and providing valuable insights for strategic decision-making.",
-        "Gained foundational Marketing expertise as part of the role, while also being a member of the CRO (Conversion Rate Optimization) team.",
+        "Ran A/B tests and competitor analysis across iBox, JD Sport, and Eraspace to optimize marketing campaign performance.",
+        "Built an Online-to-Offline (O2O) monitoring dashboard in Looker, tracking the customer journey from ad impression to in-store conversion.",
       ],
     },
   ],
 
   // Project paling baru ditaruh paling atas.
   // `category` harus salah satu dari: "Dashboard", "Research Analyst", "Automation & Data Engineering".
+  // `image`       -> path ke screenshot project (assets/image/projects/namafile.png). Kosongkan "" kalau belum ada.
+  // `confidential`-> true = tampil blur + label "Dashboard Ini Rahasia" (dipakai untuk data milik perusahaan).
+  //                  false = tampil normal (dipakai untuk project publik/pribadi).
   projects: [
     {
       title: "Operational Monthly Report Dashboard",
@@ -154,9 +136,11 @@ window.PORTFOLIO_DATA = {
       date: "June 2026",
       category: "Dashboard",
       description:
-        "Developed a centralized Power BI reporting platform consolidating operational performance across Ground Handling and Cargo Handling business units, covering KPIs for each respective line of business, and reducing monthly report preparation time to the BOD by 66% (from 15 days to 5 days). Integrated company-wide KPIs and executive reporting requirements to support monthly reviews by Business Unit leaders, BOD, and the Holding Company. Enhanced the dashboard with AI-powered analytics that transform operational data into strategic business insights, enabling faster performance evaluation and data-driven decision-making across management levels.",
+        "Centralized Power BI platform consolidating Ground and Cargo Handling KPIs, cutting monthly report prep time by 66% (15 days to 5) with AI-powered summaries for faster executive review.",
       tags: ["Power BI", "Microsoft Fabric", "DAX", "Executive Reporting"],
       link: "",
+      image: "",
+      confidential: true,
     },
     {
       title: "Customer Profiling & Collection Strategy Optimization",
@@ -164,9 +148,11 @@ window.PORTFOLIO_DATA = {
       date: "March 2026",
       category: "Research Analyst",
       description:
-        "Led a data-driven collection strategy optimization using the DMAIC methodology, analyzing customer profiles and repayment behavior with SQL to build risk-tiering and payment propensity segmentation models. Presented recommendations via executive dashboard to senior management and BOD, the strategy was implemented in the March cycle, driving a 50% uplift in repayment rates.",
+        "DMAIC-based collection strategy using SQL to build risk-tiering and payment-propensity segmentation, driving a 50% uplift in repayment rates.",
       tags: ["SQL", "DMAIC", "Segmentation", "Dashboard"],
       link: "",
+      image: "",
+      confidential: true,
     },
     {
       title: "Budget Control and Realization Monitoring Dashboard",
@@ -174,9 +160,11 @@ window.PORTFOLIO_DATA = {
       date: "January 2026",
       category: "Automation & Data Engineering",
       description:
-        "Designed and deployed an end to end automated pipeline using BigQuery SQL and Python to analyze customer payment patterns and optimize monthly Desk Collection assignments across 500+ portfolios per cycle, reducing manual allocation time by 90% and enabling data driven collection strategies that scaled seamlessly across growing account portfolios.",
+        "End-to-end BigQuery + Python pipeline analyzing payment patterns and optimizing Desk Collection assignments across 500+ portfolios per cycle, cutting manual allocation time by 90%.",
       tags: ["BigQuery", "Python", "Automation", "SQL"],
       link: "",
+      image: "",
+      confidential: true,
     },
     {
       title: "Assignment Automation For Desk Collection",
@@ -184,9 +172,11 @@ window.PORTFOLIO_DATA = {
       date: "April 2025",
       category: "Automation & Data Engineering",
       description:
-        "Built a Python-based automation in Jupyter Notebook, scheduled to run automatically each morning, reducing the manual 30-minute daily data preparation process for the Desk Collection team by 100% through automatically compiling and emailing the required dataset.",
+        "Python automation in Jupyter Notebook that compiles and emails the Desk Collection team's daily dataset automatically, eliminating a 30-minute manual task.",
       tags: ["Python", "Jupyter Notebook", "Automation"],
       link: "",
+      image: "",
+      confidential: true,
     },
     {
       title: "Retail Superstore Performance Dashboard",
@@ -194,15 +184,17 @@ window.PORTFOLIO_DATA = {
       date: "April 2024",
       category: "Dashboard",
       description:
-        "Designed and built an interactive Tableau dashboard using the Superstore dataset to analyze $2M+ in sales, profitability trends, customer segments, and product category performance. Leveraged advanced Tableau features including LOD (Level of Detail) calculations and dynamic parameters to create flexible KPI monitoring, trend analysis, and regional performance visualizations, enabling stakeholders to identify underperforming regions, optimize profit margins, and make data driven inventory and marketing decisions.",
+        "Interactive Tableau dashboard analyzing $2M+ in Superstore sales with LOD calculations and dynamic parameters to surface underperforming regions and margin opportunities.",
       tags: ["Tableau", "LOD Calculations", "Data Visualization"],
       link: "",
+      image: "",
+      confidential: false,
     },
   ],
 
-  // Toolkit inti yang paling mau ditonjolkan — tampil sebagai baris terpisah
-  // di atas grid skills biasa, supaya tidak tenggelam di antara 30+ tag lain.
-  coreSkills: ["Power BI", "DAX", "SQL / T-SQL", "Python", "Tableau", "Google BigQuery"],
+  // Skill yang paling mau ditonjolkan — tampil sebagai baris "Most Expertise"
+  // di atas grid skills biasa, supaya tidak tenggelam di antara tag lain.
+  coreSkills: ["Power BI", "Tableau", "Google Data Studio", "SQL", "Excel"],
 
   skills: [
     {
@@ -270,20 +262,24 @@ window.PORTFOLIO_DATA = {
       school: "Muhammadiyah University of Purwokerto",
       location: "Purwokerto, Central Java, Indonesia",
       degree: "Informatics Engineering",
-      period: "2024",
+      period: "2019 – 2024",
       detail: "Current IPK: 3.52 / 4.00",
       logo: "assets/image/ump.png",
     },
   ],
 
-  // `image` -> path ke badge/logo sertifikasi di assets/certifications/ (mis. "assets/certifications/power-bi.png").
-  // Kosongkan "" kalau belum ada gambarnya — otomatis dipakaikan ikon sertifikat default.
+  // `image`   -> path ke badge/gambar sertifikat di assets/image/ (mis. "assets/image/cert-bnsp.png").
+  // `certUrl` -> link ke sertifikat asli (Credly, Drive, dst). Kosongkan "" kalau belum ada —
+  //              tulisan "View Certificate" otomatis nonaktif sampai link-nya diisi.
   certifications: [
-    { name: "Microsoft Power BI Data Analyst", issuer: "Coursera", image: "" },
-    { name: "Business Intelligence Professional", issuer: "Google", image: "" },
-    { name: "Data Analyst Essential", issuer: "CISCO", image: "" },
-    { name: "Data Administrator", issuer: "BNSP", image: "" },
-    { name: "Hacker Rank Advance (SQL)", issuer: "HackerRank", image: "" },
+    { name: "Database Administrator", issuer: "BNSP", date: "January 2024", image: "assets/image/certification_bnsp_31012024.png", certUrl: "" },
+    { name: "Database Migration Engineer", issuer: "Udemy Academy", date: "July 2024", image: "assets/image/certification_database%20migration%20engineer_24072024.png", certUrl: "" },
+    { name: "Microsoft Power BI", issuer: "Maven Analytics", date: "July 2024", image: "assets/image/certification_Microsoft%20Power%20BI%20by%20Maven_29072024.png", certUrl: "" },
+    { name: "Data Analytics Essential", issuer: "CISCO", date: "August 2024", image: "assets/image/certification_cisco%2008082024.png", certUrl: "" },
+    { name: "Database Advance Course", issuer: "ITBOX", date: "September 2024", image: "assets/image/certification_itbox_23092024.png", certUrl: "" },
+    { name: "SQL Advance Level", issuer: "HackerRank", date: "October 2024", image: "assets/image/certification_sql_advanced_12102024.png", certUrl: "" },
+    { name: "Business Intelligence Professional", issuer: "Google", date: "January 2025", image: "assets/image/certification_Google%20BI%20Profesional_16012025.png", certUrl: "" },
+    { name: "Microsoft Power BI Data Analyst", issuer: "Coursera", date: "November 2025", image: "assets/image/certification_Microsoft%20Power%20BI%20Data%20Analyst_09112025.png", certUrl: "" },
   ],
 
   // Section "Clients & Testimonials" hanya muncul di halaman kalau array ini terisi.
@@ -307,26 +303,24 @@ window.PORTFOLIO_DATA = {
   // },
   clients: [],
 
+  // Sekarang pakai layout & style yang sama seperti Education (logo + card).
+  // `logo` -> path ke logo organisasi di assets/image/ (mis. "assets/image/logo_genbi.png").
   organizations: [
     {
       role: "General Secretary",
       org: "Generasi Baru Bank Indonesia (GenBI)",
       period: "Jun 2022 – Jun 2023",
-      bullets: [
-        "Formulated a documentation system that increased accessibility by 20%, leading to a 15% reduction in support requests.",
-        "Delivered concise meeting overviews, boosting satisfaction.",
-        "Cultivated connections with stakeholders, resulting in a 15% rise in cooperation.",
-        "Coordinated team endeavors to achieve objectives within schedule and budget constraints.",
-      ],
+      description:
+        "Built a documentation system that cut support requests by 15% and strengthened stakeholder cooperation by 15%.",
+      logo: "assets/image/logo_genbi.png",
     },
     {
       role: "Business Capital Funding",
       org: "The Executive Student Board of Engineering and Science",
       period: "Aug 2020 – Sep 2021",
-      bullets: [
-        "Collaborated with the first party to sell consumer goods at more affordable prices, resulting in a 15% increase in sales volume.",
-        "Participated as a member of Dana Usaha and played a crucial role in establishing partnerships to enhance the accessibility and visibility of student-run businesses.",
-      ],
+      description:
+        "Helped grow student-run business partnerships, driving a 15% increase in sales volume.",
+      logo: "assets/image/logo_bem.jpg",
     },
   ],
 };

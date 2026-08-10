@@ -22,12 +22,18 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5.5"/><path d="M9 12.5 7.5 21l4.5-2.5 4.5 2.5-1.5-8.5"/></svg>',
     graduationCap:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8l10-5 10 5-10 5-10-5z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/><path d="M22 8v6"/></svg>',
+    building:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v16"/><path d="M14 21V10a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v11"/><path d="M9 8h.01M9 12h.01M9 16h.01"/></svg>',
     trend:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
     whatsapp:
       '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.42 1.27 4.86L2 22l5.32-1.31a9.9 9.9 0 0 0 4.72 1.2h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2zm5.8 14.2c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.16-4.93-4.35-.14-.19-1.19-1.58-1.19-3.01 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.65.5.24.58.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.47.13.65-.05.18-.18.72-.84.91-1.13.19-.29.38-.24.63-.15.26.1 1.66.78 1.94.92.28.14.47.21.54.33.07.12.07.68-.17 1.35z"/></svg>',
-    linkedinBadge:
-      '<svg viewBox="0 0 448 512" fill="currentColor"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-338a53.34 53.34 0 1 1 53.33-53.33A53.34 53.34 0 0 1 53.84 110zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.28 61.9 111.28 142.3z"/></svg>',
+    sun:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.5M12 19v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M2.5 12H5M19 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>',
+    moon:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>',
+    lock:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
   };
 
   function el(html) {
@@ -40,6 +46,49 @@
     const div = document.createElement("div");
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  // ---------------------------------------------------------------------
+  // Duration helper — turns "Oct 2025 – Present" into "1 yr 10 mos" etc.
+  // ---------------------------------------------------------------------
+  const MONTH_NAMES = [
+    "january", "february", "march", "april", "may", "june",
+    "july", "august", "september", "october", "november", "december",
+  ];
+
+  function parseMonthYear(str) {
+    const match = str.match(/([A-Za-z]+)\s+(\d{4})/);
+    if (!match) return null;
+    const prefix = match[1].toLowerCase().slice(0, 3);
+    const monthIndex = MONTH_NAMES.findIndex((m) => m.startsWith(prefix));
+    if (monthIndex === -1) return null;
+    return { year: parseInt(match[2], 10), month: monthIndex };
+  }
+
+  function formatDuration(period) {
+    const parts = period.split(/[–-]/).map((s) => s.trim());
+    if (parts.length < 2) return "";
+    const start = parseMonthYear(parts[0]);
+    if (!start) return "";
+
+    let end;
+    if (/present/i.test(parts[1])) {
+      const now = new Date();
+      end = { year: now.getFullYear(), month: now.getMonth() };
+    } else {
+      end = parseMonthYear(parts[1]);
+    }
+    if (!end) return "";
+
+    let totalMonths = (end.year - start.year) * 12 + (end.month - start.month);
+    if (totalMonths < 1) totalMonths = 1;
+
+    const yrs = Math.floor(totalMonths / 12);
+    const mos = totalMonths % 12;
+    const bits = [];
+    if (yrs > 0) bits.push(`${yrs} yr${yrs > 1 ? "s" : ""}`);
+    if (mos > 0 || yrs === 0) bits.push(`${mos} mo${mos !== 1 ? "s" : ""}`);
+    return bits.join(" ");
   }
 
   // ---------------------------------------------------------------------
@@ -63,7 +112,7 @@
     social.innerHTML = "";
     if (profile.links.linkedin && profile.links.linkedin !== "#") {
       social.appendChild(
-        el(`<a class="linkedin-badge" href="${escapeHTML(profile.links.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedinBadge}</a>`)
+        el(`<a href="${escapeHTML(profile.links.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>`)
       );
     }
     social.appendChild(
@@ -72,6 +121,23 @@
     social.appendChild(
       el(`<a href="https://wa.me/${escapeHTML(profile.phoneHref.replace("+", ""))}" target="_blank" rel="noopener" aria-label="WhatsApp">${ICONS.whatsapp}</a>`)
     );
+  }
+
+  // ---------------------------------------------------------------------
+  // Nav brand logo (swaps light/dark via CSS, hides gracefully if missing)
+  // ---------------------------------------------------------------------
+  function renderBrand(data) {
+    const { profile } = data;
+    document.querySelectorAll(".logo-for-light").forEach((img) => {
+      img.src = profile.logoDark;
+      img.alt = profile.name;
+      img.onerror = () => { img.style.display = "none"; };
+    });
+    document.querySelectorAll(".logo-for-dark").forEach((img) => {
+      img.src = profile.logoLight;
+      img.alt = profile.name;
+      img.onerror = () => { img.style.display = "none"; };
+    });
   }
 
   // ---------------------------------------------------------------------
@@ -106,6 +172,7 @@
         .map((b) => `<li>${escapeHTML(b)}</li>`)
         .join("");
       const needsToggle = job.bullets.length > 3;
+      const duration = formatDuration(job.period);
 
       const item = el(`
         <div class="timeline-item ${job.current ? "current" : ""}" data-animate>
@@ -113,7 +180,7 @@
           <div class="timeline-card">
             <div class="timeline-head">
               <span class="timeline-role">${escapeHTML(job.role)}</span>
-              <span class="timeline-period">${escapeHTML(job.period)}</span>
+              <span class="timeline-period">${escapeHTML(job.period)}${duration ? ` · ${duration}` : ""}</span>
             </div>
             <div class="timeline-meta">${escapeHTML(job.company)}<span class="dot-sep">•</span>${escapeHTML(job.location)}</div>
             <ul class="timeline-bullets ${needsToggle ? "collapsed" : ""}">${bulletsHTML}</ul>
@@ -166,16 +233,27 @@
         .map((t) => `<span class="tag">${escapeHTML(t)}</span>`)
         .join("");
 
+      const thumbStyle = project.image ? ` style="background-image:url('${escapeHTML(project.image)}')"` : "";
+      const thumbHTML = `
+        <div class="project-thumb">
+          <div class="project-thumb-bg${project.confidential ? " project-thumb-blur" : ""}"${thumbStyle}></div>
+          ${project.confidential ? `<div class="project-thumb-overlay">${ICONS.lock}<span>Dashboard Ini Rahasia</span></div>` : ""}
+        </div>
+      `;
+
       const card = el(`
         <div class="project-card" data-animate data-category="${escapeHTML(project.category || "")}">
-          <div class="project-card-head">
-            <span class="project-title">${escapeHTML(project.title)}</span>
-            <span class="project-date">${escapeHTML(project.date)}</span>
+          ${thumbHTML}
+          <div class="project-card-body">
+            <div class="project-card-head">
+              <span class="project-title">${escapeHTML(project.title)}</span>
+              <span class="project-date">${escapeHTML(project.date)}</span>
+            </div>
+            <div class="project-org">${escapeHTML(project.org)}</div>
+            ${project.category ? `<span class="category-badge">${escapeHTML(project.category)}</span>` : ""}
+            <p class="project-desc">${escapeHTML(project.description)}</p>
+            <div class="tag-row">${tagsHTML}</div>
           </div>
-          <div class="project-org">${escapeHTML(project.org)}</div>
-          ${project.category ? `<span class="category-badge">${escapeHTML(project.category)}</span>` : ""}
-          <p class="project-desc">${escapeHTML(project.description)}</p>
-          <div class="tag-row">${tagsHTML}</div>
         </div>
       `);
 
@@ -215,7 +293,7 @@
   }
 
   // ---------------------------------------------------------------------
-  // Education / Certifications / Organizations
+  // Education / Organizations (same logo-card layout for both)
   // ---------------------------------------------------------------------
   function renderEducation(data) {
     const eduList = document.getElementById("educationList");
@@ -243,14 +321,20 @@
     const orgList = document.getElementById("organizationsList");
     orgList.innerHTML = "";
     data.organizations.forEach((org) => {
-      const bulletsHTML = org.bullets.map((b) => `<li>${escapeHTML(b)}</li>`).join("");
+      const logo = org.logo
+        ? `<img src="${escapeHTML(org.logo)}" alt="${escapeHTML(org.org)} logo">`
+        : ICONS.building;
+
       orgList.appendChild(
         el(`
-          <div class="info-card" data-animate>
-            <h3>${escapeHTML(org.role)}</h3>
-            <div class="info-meta">${escapeHTML(org.org)}</div>
-            <div class="info-period" style="margin-bottom:10px;">${escapeHTML(org.period)}</div>
-            <ul class="timeline-bullets">${bulletsHTML}</ul>
+          <div class="edu-card" data-animate>
+            <span class="edu-logo">${logo}</span>
+            <div class="edu-body">
+              <div class="edu-period">${escapeHTML(org.period)}</div>
+              <div class="edu-degree">${escapeHTML(org.role)}</div>
+              <div class="edu-school">${escapeHTML(org.org)}</div>
+              ${org.description ? `<div class="edu-detail">${escapeHTML(org.description)}</div>` : ""}
+            </div>
           </div>
         `)
       );
@@ -265,12 +349,18 @@
         ? `<img src="${escapeHTML(cert.image)}" alt="${escapeHTML(cert.name)} badge">`
         : ICONS.certificate;
 
+      const viewLink = cert.certUrl
+        ? `<a class="cert-view" href="${escapeHTML(cert.certUrl)}" target="_blank" rel="noopener">View Certificate</a>`
+        : `<span class="cert-view cert-view-disabled">View Certificate</span>`;
+
       grid.appendChild(
         el(`
           <div class="cert-card" data-animate>
             <div class="cert-badge">${badge}</div>
             <div class="cert-name">${escapeHTML(cert.name)}</div>
             <div class="cert-issuer">${escapeHTML(cert.issuer)}</div>
+            <div class="cert-date">${escapeHTML(cert.date)}</div>
+            ${viewLink}
           </div>
         `)
       );
@@ -326,7 +416,7 @@
       el(`<a href="mailto:${escapeHTML(profile.email)}">${ICONS.email}${escapeHTML(profile.email)}</a>`)
     );
     links.appendChild(
-      el(`<a href="tel:${escapeHTML(profile.phoneHref)}">${ICONS.phone}${escapeHTML(profile.phone)}</a>`)
+      el(`<a href="https://wa.me/${escapeHTML(profile.phoneHref.replace("+", ""))}" target="_blank" rel="noopener">${ICONS.whatsapp}WhatsApp</a>`)
     );
     if (profile.links.linkedin && profile.links.linkedin !== "#") {
       links.appendChild(
@@ -350,8 +440,38 @@
   // ---------------------------------------------------------------------
   function renderFooter(data) {
     const year = new Date().getFullYear();
-    document.getElementById("footerText").textContent =
-      `© ${year} ${data.profile.name}. Built with HTML & CSS.`;
+    document.getElementById("footerText").textContent = `© ${year} ${data.profile.name}.`;
+  }
+
+  // ---------------------------------------------------------------------
+  // Theme toggle (light / dark), persisted in localStorage
+  // ---------------------------------------------------------------------
+  function setupTheme() {
+    const root = document.documentElement;
+    const toggle = document.getElementById("themeToggle");
+    const stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark") {
+      root.setAttribute("data-theme", stored);
+    }
+
+    const effectiveTheme = () => {
+      const explicit = root.getAttribute("data-theme");
+      if (explicit) return explicit;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    };
+
+    const syncIcon = () => {
+      toggle.innerHTML = effectiveTheme() === "dark" ? ICONS.sun : ICONS.moon;
+    };
+
+    toggle.addEventListener("click", () => {
+      const next = effectiveTheme() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      syncIcon();
+    });
+
+    syncIcon();
   }
 
   // ---------------------------------------------------------------------
@@ -421,6 +541,7 @@
     }
 
     renderHero(data);
+    renderBrand(data);
     renderAbout(data);
     renderExperience(data);
     renderProjects(data);
@@ -432,6 +553,7 @@
     renderContact(data);
     renderFooter(data);
 
+    setupTheme();
     setupNav();
     // Re-run animation setup after dynamic content is in the DOM.
     setupAnimations();
