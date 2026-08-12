@@ -63,6 +63,16 @@ window.PORTFOLIO_DATA = {
 
   experience: [
     {
+      role: "Data Analyst (Freelance)",
+      company: "Bank Indonesia Purwokerto",
+      location: "Purwokerto",
+      period: "January 2026 – Present",
+      current: true,
+      bullets: [
+        "Designed and maintain a budget control and realization monitoring dashboard in spreadsheet, pulling live data directly from the company's ERP system.",
+      ],
+    },
+    {
       role: "Data Analyst",
       company: "PT Jasa Angkasa Semesta",
       location: "Soekarno Hatta Airport",
@@ -120,6 +130,17 @@ window.PORTFOLIO_DATA = {
       bullets: [
         "Ran A/B tests and competitor analysis across iBox, JD Sport, and Eraspace to optimize marketing campaign performance.",
         "Built an Online-to-Offline (O2O) monitoring dashboard in Looker, tracking the customer journey from ad impression to in-store conversion.",
+      ],
+    },
+    {
+      role: "Research Analyst",
+      company: "Freelance / Independent",
+      location: "Remote",
+      period: "November 2022 – December 2025",
+      bullets: [
+        "Provided statistical analysis and data interpretation support for various research projects using SPSS and SmartPLS.",
+        "Designed and validated research frameworks and survey instruments to enhance methodological rigor.",
+        "Assisted in preparing data visualizations and manuscript materials for publication in Sinta-accredited journals.",
       ],
     },
   ],
