@@ -127,8 +127,10 @@ window.PORTFOLIO_DATA = {
   // Project paling baru ditaruh paling atas.
   // `category` harus salah satu dari: "Dashboard", "Research Analyst", "Automation & Data Engineering".
   // `image`       -> path ke screenshot project (assets/image/projects/namafile.png). Kosongkan "" kalau belum ada.
-  // `confidential`-> true = tampil blur + label "Dashboard Ini Rahasia" (dipakai untuk data milik perusahaan).
-  //                  false = tampil normal (dipakai untuk project publik/pribadi).
+  // `confidential`-> true = tampil blur + label "Confidential" (dipakai untuk data milik perusahaan yang belum boleh ditampilkan).
+  //                  false = tampil normal (dipakai untuk project yang sudah boleh ditampilkan/publik).
+  // `link`    -> URL live/publik dari dashboard-nya (mis. Tableau Public). Muncul sebagai "View Live Dashboard".
+  // `docUrl`  -> path ke file dokumentasi (PDF) di assets/. Muncul sebagai "View Documentation".
   projects: [
     {
       title: "Operational Monthly Report Dashboard",
@@ -139,8 +141,9 @@ window.PORTFOLIO_DATA = {
         "Centralized Power BI platform consolidating Ground and Cargo Handling KPIs, cutting monthly report prep time by 66% (15 days to 5) with AI-powered summaries for faster executive review.",
       tags: ["Power BI", "Microsoft Fabric", "DAX", "Executive Reporting"],
       link: "",
-      image: "",
-      confidential: true,
+      docUrl: "",
+      image: "assets/image/dashboard_operational_monthly_jas.png",
+      confidential: false,
     },
     {
       title: "Customer Profiling & Collection Strategy Optimization",
@@ -151,8 +154,9 @@ window.PORTFOLIO_DATA = {
         "DMAIC-based collection strategy using SQL to build risk-tiering and payment-propensity segmentation, driving a 50% uplift in repayment rates.",
       tags: ["SQL", "DMAIC", "Segmentation", "Dashboard"],
       link: "",
+      docUrl: "assets/Mapping%20Distribution%20Assignment.pdf",
       image: "",
-      confidential: true,
+      confidential: false,
     },
     {
       title: "Budget Control and Realization Monitoring Dashboard",
@@ -163,8 +167,9 @@ window.PORTFOLIO_DATA = {
         "End-to-end BigQuery + Python pipeline analyzing payment patterns and optimizing Desk Collection assignments across 500+ portfolios per cycle, cutting manual allocation time by 90%.",
       tags: ["BigQuery", "Python", "Automation", "SQL"],
       link: "",
-      image: "",
-      confidential: true,
+      docUrl: "",
+      image: "assets/image/budget%20monitoring%20BI%20Purwokerto.png",
+      confidential: false,
     },
     {
       title: "Assignment Automation For Desk Collection",
@@ -175,8 +180,9 @@ window.PORTFOLIO_DATA = {
         "Python automation in Jupyter Notebook that compiles and emails the Desk Collection team's daily dataset automatically, eliminating a 30-minute manual task.",
       tags: ["Python", "Jupyter Notebook", "Automation"],
       link: "",
+      docUrl: "assets/Assignment%20Automation.pdf",
       image: "",
-      confidential: true,
+      confidential: false,
     },
     {
       title: "Retail Superstore Performance Dashboard",
@@ -186,8 +192,9 @@ window.PORTFOLIO_DATA = {
       description:
         "Interactive Tableau dashboard analyzing $2M+ in Superstore sales with LOD calculations and dynamic parameters to surface underperforming regions and margin opportunities.",
       tags: ["Tableau", "LOD Calculations", "Data Visualization"],
-      link: "",
-      image: "",
+      link: "https://public.tableau.com/app/profile/putri.asih.puji.lestari/viz/SampleSuperstore_17188715859720/CustomerAnalysis",
+      docUrl: "",
+      image: "assets/image/Retail%20Sales%20Performance.png",
       confidential: false,
     },
   ],

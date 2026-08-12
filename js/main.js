@@ -34,6 +34,10 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>',
     lock:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
+    doc:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>',
+    externalLink:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg>',
   };
 
   function el(html) {
@@ -233,12 +237,23 @@
         .join("");
 
       const thumbStyle = project.image ? ` style="background-image:url('${escapeHTML(project.image)}')"` : "";
+      const fallbackIcon = project.image ? "" : project.docUrl ? ICONS.doc : ICONS.trend;
       const thumbHTML = `
         <div class="project-thumb">
-          <div class="project-thumb-bg${project.confidential ? " project-thumb-blur" : ""}"${thumbStyle}></div>
-          ${project.confidential ? `<div class="project-thumb-overlay">${ICONS.lock}<span>Dashboard Ini Rahasia</span></div>` : ""}
+          <div class="project-thumb-bg${project.confidential ? " project-thumb-blur" : ""}"${thumbStyle}>${fallbackIcon}</div>
+          ${project.confidential ? `<div class="project-thumb-overlay">${ICONS.lock}<span>Confidential</span></div>` : ""}
         </div>
       `;
+
+      const actionsHTML =
+        project.link || project.docUrl
+          ? `
+            <div class="project-actions">
+              ${project.link ? `<a class="project-link" href="${escapeHTML(project.link)}" target="_blank" rel="noopener">${ICONS.externalLink}View Live Dashboard</a>` : ""}
+              ${project.docUrl ? `<a class="project-link" href="${escapeHTML(project.docUrl)}" target="_blank" rel="noopener">${ICONS.doc}View Documentation</a>` : ""}
+            </div>
+          `
+          : "";
 
       const card = el(`
         <div class="project-card" data-animate data-category="${escapeHTML(project.category || "")}">
@@ -251,6 +266,7 @@
             <div class="project-org">${escapeHTML(project.org)}</div>
             <p class="project-desc">${escapeHTML(project.description)}</p>
             <div class="tag-row">${tagsHTML}</div>
+            ${actionsHTML}
           </div>
         </div>
       `);

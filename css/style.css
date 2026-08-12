@@ -856,6 +856,16 @@ section {
   background: linear-gradient(155deg, var(--accent-tint), var(--surface-sunken));
   background-size: cover;
   background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-dark);
+}
+
+.project-thumb-bg svg {
+  width: 34px;
+  height: 34px;
+  opacity: 0.7;
 }
 
 .project-thumb-bg.project-thumb-blur {
@@ -940,6 +950,34 @@ section {
   border: 1px solid var(--border);
   padding: 4px 10px;
   border-radius: 100px;
+}
+
+.project-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+.project-link svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 
 @media (max-width: 640px) {
