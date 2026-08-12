@@ -64,12 +64,12 @@ window.PORTFOLIO_DATA = {
   experience: [
     {
       role: "Data Analyst (Freelance)",
-      company: "Bank Indonesia Purwokerto",
-      location: "Purwokerto",
+      company: "Freelance / Independent",
+      location: "Remote",
       period: "January 2026 – Present",
       current: true,
       bullets: [
-        "Designed and maintain a budget control and realization monitoring dashboard in spreadsheet, pulling live data directly from the company's ERP system.",
+        "Designed and maintain a budget control and realization monitoring dashboard in spreadsheet for client Bank Indonesia Purwokerto, pulling live data directly from the company's ERP system.",
       ],
     },
     {
